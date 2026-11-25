@@ -50,7 +50,6 @@ function Home() {
   const [photo, setPhoto] = useState<number | null>(null);
   const [cookie, setCookie] = useState(false);
   useEffect(() => { setCookie(!localStorage.getItem("bomdebico-cookie")); }, []);
-  const [clubPlan, setClubPlan] = useState("Clube Amigo");
 
   function submitGrooming(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -77,8 +76,8 @@ function Home() {
     <main>
       <div className="top-strip"><span>NO SÍTIO CERCADO, CURITIBA</span><span>Você ama, a gente cuida. <Paw /></span></div>
       <header className="site-header">
-        <a className="brand" href="#inicio" aria-label="Bom de Bico - início"><span className="brand-mark"><Paw /></span><span><strong>Bom de Bico</strong><small>AVIÁRIO E PET SHOP</small></span></a>
-        <nav aria-label="Navegação principal"><a href="#servicos">Serviços</a><a href="#produtos">Produtos</a><a href="#galeria">Galeria</a><a href="#clube">Clube</a><a href="#local">Onde estamos</a></nav>
+        <a className="brand" href="#inicio" aria-label="Bom de Bico - início"><img className="brand-logo" src="/bom-de-bico-logo.png" alt="Logo Aviário e Pet Shop Bom de Bico" /></a>
+        <nav aria-label="Navegação principal"><a href="#servicos">Serviços</a><a href="#produtos">Produtos</a><a href="#galeria">Galeria</a><a href="#local">Onde estamos</a></nav>
         <a className="header-cta" href={wa("Olá! Vim pelo site do Bom de Bico.")} target="_blank" rel="noreferrer">Fale com a gente <span>↗</span></a>
       </header>
 
@@ -127,18 +126,6 @@ function Home() {
 
       <AdSlot label="Publicidade" />
 
-      <section className="club-section" id="clube">
-        <div className="club-paper">
-          <div className="club-copy"><p className="eyebrow">UM CLUBE PRA QUEM AMA CUIDAR</p><h2>Clube<br/><em>Bom de Bico.</em></h2><p>Uma ideia pra ficar ainda mais pertinho de quem faz parte da família.</p><span className="coming-soon">PLANOS EM PREPARAÇÃO</span></div>
-          <div className="club-plans">
-            <button className={"club-plan " + (clubPlan === "Clube Amigo" ? "selected" : "")} onClick={() => setClubPlan("Clube Amigo")}><span>01 / PRA COMEÇAR</span><strong>Clube Amigo</strong><small>Avisos de novidades e informações da loja.</small><b>Quero participar ↗</b></button>
-            <button className={"club-plan " + (clubPlan === "Clube Dono Coruja" ? "selected" : "")} onClick={() => setClubPlan("Clube Dono Coruja")}><span>02 / PRA QUEM É DE CASA</span><strong>Clube Dono Coruja</strong><small>Condições especiais definidas pela loja.</small><b>Quero participar ↗</b></button>
-            <a className="button button-green club-cta" href={wa("Olá! Tenho interesse no " + clubPlan + ". Podem me avisar quando estiver disponível?")}>Tenho interesse no {clubPlan} <span>↗</span></a>
-          </div>
-          <span className="club-star">✳</span>
-        </div>
-      </section>
-
       <section className="grooming-section section-wrap" id="banho">
         <div className="grooming-intro"><p className="eyebrow">VAMOS MARCAR UM CUIDADO?</p><h2>Seu pet<br/><em>merece esse carinho.</em></h2><p>Preencha os dados e a gente continua a conversa pelo WhatsApp. O dia e o horário são confirmados diretamente com a loja.</p><div className="grooming-doodle"><Paw/><span>au au!</span></div></div>
         <form className="grooming-form" onSubmit={submitGrooming}>
@@ -164,7 +151,7 @@ function Home() {
         </div>
       </section>
 
-      <footer className="site-footer"><a className="footer-brand" href="#inicio">Bom de Bico<span>AVIÁRIO E PET SHOP</span></a><p>Você ama, a gente cuida.</p><div><a href={wa("Olá! Vim pelo site do Bom de Bico.")} target="_blank" rel="noreferrer">Fale com a loja ↗</a><a href={wa("Olá! Quero anunciar no site do Bom de Bico.")} target="_blank" rel="noreferrer">Anuncie aqui ↗</a></div><small>© {new Date().getFullYear()} Aviário e Pet Shop Bom de Bico · Sítio Cercado, Curitiba - PR</small></footer>
+      <footer className="site-footer"><a className="footer-brand" href="#inicio" aria-label="Bom de Bico - início"><img src="/bom-de-bico-logo.png" alt="Logo Aviário e Pet Shop Bom de Bico" /></a><p>Você ama, a gente cuida.</p><div><a href={wa("Olá! Vim pelo site do Bom de Bico.")} target="_blank" rel="noreferrer">Fale com a loja ↗</a><a href={wa("Olá! Quero anunciar no site do Bom de Bico.")} target="_blank" rel="noreferrer">Anuncie aqui ↗</a></div><small>© {new Date().getFullYear()} Aviário e Pet Shop Bom de Bico · Sítio Cercado, Curitiba - PR</small></footer>
 
       <a className="floating-whatsapp" href={wa("Olá! Vim pelo site do Bom de Bico.")} target="_blank" rel="noreferrer" aria-label="Chamar o Bom de Bico no WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3a12 12 0 0 0-10.3 18.2L4 28l7-1.8A12 12 0 1 0 16 3Zm0 21.8a9.7 9.7 0 0 1-4.9-1.3l-.4-.2-4.1 1.1 1.1-4-.3-.4A9.8 9.8 0 1 1 16 24.8Zm5.4-7.3c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.5 0-.6-.1-.2-.7-1.7-1-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.8s1.2 3.2 1.4 3.4c.2.2 2.4 3.7 5.8 5.1.8.4 1.5.6 2 .7.8.2 1.6.2 2.2.1.7-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.4Z"/></svg></a>
 
